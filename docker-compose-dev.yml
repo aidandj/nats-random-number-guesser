@@ -1,0 +1,19 @@
+version: "3"
+services:
+  nats:
+    image: nats
+    ports:
+      - "8222:8222"
+  random-number-server:
+    image: server
+    build: ./server_container/
+    command: "python server.py"
+  random-number-client:
+    image: client
+    build: ./client_container/
+    command: tail -f /dev/null
+
+networks:
+  default:
+    external:
+      name: nats
