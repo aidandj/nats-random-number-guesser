@@ -28,7 +28,7 @@ jobs:
 
     # Brings up the containers
     - name: up
-      run: docker-compose up
+      run: docker-compose up -d
 
     # Runs a set of commands using the runners shell
     - name: Execute python client
