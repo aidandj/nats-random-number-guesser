@@ -18,6 +18,7 @@ This `docker-compose` will bring up a network of nats.io servers, along with the
 
 ## Instructions
 
-1. `docker-compose up`
-2. Attach to client container
-3. `python client.py`
+1. `docker network create nats`
+2. `docker-compose up`
+3. Attach to client container
+4. `python client.py`
