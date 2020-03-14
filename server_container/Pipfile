@@ -1,0 +1,5 @@
+[packages]
+asyncio-nats-client = "*"
+
+[requires]
+python_version = "3.7"

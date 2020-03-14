@@ -1,0 +1,25 @@
+version: "3"
+services:
+  nats:
+    image: nats
+    ports:
+      - "8222:8222"
+  nats-1:
+    image: nats
+    command: "--cluster nats://0.0.0.0:6222 --routes=nats://ruser:T0pS3cr3t@nats:6222"
+  nats-2:
+    image: nats
+    command: "--cluster nats://0.0.0.0:6222 --routes=nats://ruser:T0pS3cr3t@nats:6222"
+  random-number-server:
+    image: server
+    build: ./server_container/
+    command: "python server.py"
+  random-number-client:
+    image: client
+    build: ./client_container/
+    command: tail -f /dev/null
+
+networks:
+  default:
+    external:
+      name: nats

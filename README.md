@@ -4,31 +4,20 @@ Just some experiments with [nats.io](https://nats.io/)
 
 ## Server
 
-Generates a random number, and creates helpers to help guess the number
+* Generates a random number, and creates helpers to help guess the number
+* Dockerfile that sets up `pipenv` for the server
 
 ## Client
 
-Tries to guess the number. Keeps track of previous guesses
+* Tries to guess the number. Keeps track of previous guesses
+* Dockerfile that sets up `pipenv` for the client
 
-## nats.io server
+## docker-compose.yml
 
-I used this `docker-compose.yml` to stand up the server.
+This `docker-compose` will bring up a network of nats.io servers, along with the server and client services. The server container will start automatically, the client container is sitting ready to be connected to. I use `VSCode` to attach a shell to the client container, then run `python client.py`
 
-```yml
-version: "3"
-services:
-  nats:
-    image: nats
-    ports:
-      - "8222:8222"
-  nats-1:
-    image: nats
-    command: "--cluster nats://0.0.0.0:6222 --routes=nats://ruser:T0pS3cr3t@nats:6222"
-  nats-2:
-    image: nats
-    command: "--cluster nats://0.0.0.0:6222 --routes=nats://ruser:T0pS3cr3t@nats:6222"
-networks:
-  default:
-    external:
-      name: nats
-```
+## Instructions
+
+1. `docker-compose up`
+2. Attach to client container
+3. `python client.py`
