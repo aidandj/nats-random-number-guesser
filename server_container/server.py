@@ -41,10 +41,7 @@ async def handle_min_max_request(msg):
 
 async def run(loop):
 
-    # It is very likely that the demo server will see traffic from clients other than yours.
-    # To avoid this, start your own locally and modify the example to use it.
     await nc.connect("nats://nats:4222", loop=loop)
-    # await nc.connect("nats://demo.nats.io:4222", loop=loop)
 
     try:
         await reset_random_number()
@@ -56,32 +53,6 @@ async def run(loop):
 
         while True:
             await asyncio.sleep(1)
-
-        # async def forever():
-        #     while True:
-        #         pass
-
-        # task = asyncio.create_task(forever())
-        # await asyncio.wait({task})
-
-        # Send a request and expect a single response
-        # and trigger timeout if not faster than 500 ms.
-        # try:
-        #     response = await nc.request("help", b'help me', 0.5)
-        #     print("Received response: {message}".format(
-        #         message=response.data.decode()))
-        # except ErrTimeout:
-        #     print("Request timed out")
-
-        # my_input = input()
-        # while(my_input is not ""):
-        #     my_input = input()
-
-        # Remove interest in subscription.
-        # await nc.unsubscribe(sid)
-
-        # # Terminate connection to NATS.
-        # await nc.close()
 
     except KeyboardInterrupt:
         await nc.close()
