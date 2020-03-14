@@ -22,6 +22,10 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    # Create the network
+    - name: create network
+      run: docker network create nats
+
     # Brings up the containers
     - name: up
       run: docker-compose up
