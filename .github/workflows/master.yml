@@ -4,7 +4,7 @@ name: Master
 
 on:
   push:
-    branches: [ testing_pushed_containers ]
+    branches: [ master ]
 
 jobs:
 
@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           workdir: server_container
-          tags: testing
+          tags: latest
 
   deploy-client:
     runs-on: ubuntu-latest
@@ -56,4 +56,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           workdir: client_container
-          tags: testing
+          tags: latest
