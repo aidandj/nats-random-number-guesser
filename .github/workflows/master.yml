@@ -39,8 +39,8 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: aidandj/nats-random-number-guesser-server
-          username: ${{ secrets.dockerhub-username }}
-          password: ${{ secrets.dockerhub-password }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
           workdir: server_container
           tags: testing
 
@@ -53,7 +53,7 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: aidandj/nats-random-number-guesser-client
-          username: ${{ secrets.dockerhub-username }}
-          password: ${{ secrets.dockerhub-password }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
           workdir: client_container
           tags: testing
