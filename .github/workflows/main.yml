@@ -1,12 +1,10 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request 
 # events but only for the master branch
 on:
   push:
-    branches: [ '**' ]
+    branches-ignore: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -26,9 +24,9 @@ jobs:
     - name: create network
       run: docker network create nats
 
-    # Brings up the containers
+    # Brings up the containers. And builds them
     - name: up
-      run: docker-compose up -d
+      run: docker-compose -f docker-compose-dev.yml up -d
 
     # Runs a set of commands using the runners shell
     - name: Execute python client

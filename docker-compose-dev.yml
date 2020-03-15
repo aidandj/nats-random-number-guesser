@@ -5,10 +5,12 @@ services:
     ports:
       - "8222:8222"
   random-number-server:
-    image: aidandj/nats-random-number-guesser-server
+    image: server
+    build: ./server_container/
     command: "python server.py"
   random-number-client:
-    image:  aidandj/nats-random-number-guesser-client
+    image: client
+    build: ./client_container/
     command: tail -f /dev/null
 
 networks:

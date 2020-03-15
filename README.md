@@ -6,15 +6,23 @@ Just some experiments with [nats.io](https://nats.io/)
 
 * Generates a random number, and creates helpers to help guess the number
 * Dockerfile that sets up `pipenv` for the server
+* This container gets pushed to Dockerhub and used by the main `docker-compose.yml`
 
 ## Client
 
 * Tries to guess the number. Keeps track of previous guesses
 * Dockerfile that sets up `pipenv` for the client
+* This container gets pushed to Dockerhub and used by the main `docker-compose.yml`
 
 ## docker-compose.yml
 
-This `docker-compose` will bring up a network of nats.io servers, along with the server and client services. The server container will start automatically, the client container is sitting ready to be connected to. I use `VSCode` to attach a shell to the client container, then run `python client.py`
+This `docker-compose` will bring up a nats.io server, along with the server and client services. The server container will start automatically, the client container is sitting ready to be connected to. I use `VSCode` to attach a shell to the client container, then run `python client.py`
+
+The python client and server get pulled from my Dockerhub
+
+## docker-compose-dev.yml
+
+This `docker-compose` file will use the local containers instead of the pushed ones.
 
 ## Instructions
 
