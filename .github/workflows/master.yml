@@ -36,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: aidandj/nats-random-number-guesser-server
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: aidandj/nats-random-number-guesser-client
           username: ${{ secrets.DOCKERHUB_USERNAME }}
